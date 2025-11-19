@@ -3,6 +3,8 @@ Block Explorer hosted at https://explore.kernelcoin.org
 
 I was originally going to implement https://github.com/litecore-archive/insight-lite-api but decided to port https://github.com/jonasschnelli/simple-block-explorer
 
+https://librescan.org/ is a good alternative too
+
 ## Screenshots
 <img width="1380" height="817" alt="Screenshot 2025-11-18 at 8 14 13 PM" src="https://github.com/user-attachments/assets/457e9dae-d1c9-4ff1-b4df-1b5c9afae2f4" />
 
