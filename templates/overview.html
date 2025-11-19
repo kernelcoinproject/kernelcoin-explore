@@ -1,0 +1,112 @@
+{{define "overview.html"}}
+<div class="row mb-4">
+  <div class="col-12">
+    <div class="hero">
+      <h1><i class="fas fa-cube"></i> Kernelcoin Block Explorer</h1>
+      <p>Explore blocks, transactions, and addresses on the Kernelcoin network</p>
+    </div>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-12">
+    <h2 style="color: var(--primary); margin-bottom: 0.5rem;">
+      <i class="fas fa-cubes"></i> Latest Blocks
+    </h2>
+    <p class="text-muted" style="margin-bottom: 1.5rem;">Last {{len .Blocks}} blocks on the network</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div style="background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 12px; overflow: hidden; box-shadow: var(--glow);">
+      <div style="overflow-x: auto;">
+        <table style="width: 100%; margin: 0; border-collapse: collapse;">
+          <thead>
+            <tr style="background: rgba(42, 214, 255, 0.1); border-bottom: 2px solid var(--border-color);">
+              <th style="padding: 1rem; text-align: left; color: var(--primary); font-weight: bold; border-right: 1px solid var(--border-color);">Height</th>
+              <th style="padding: 1rem; text-align: left; color: var(--primary); font-weight: bold; border-right: 1px solid var(--border-color);">Hash</th>
+              <th style="padding: 1rem; text-align: center; color: var(--primary); font-weight: bold; border-right: 1px solid var(--border-color);">Transactions</th>
+              <th style="padding: 1rem; text-align: center; color: var(--primary); font-weight: bold; border-right: 1px solid var(--border-color);">Size</th>
+              <th style="padding: 1rem; text-align: center; color: var(--primary); font-weight: bold;">Age</th>
+            </tr>
+          </thead>
+          <tbody>
+            {{range .Blocks}}
+            <tr style="border-bottom: 1px solid var(--border-color); transition: background 0.2s ease;">
+              <td style="padding: 1rem; border-right: 1px solid var(--border-color); color: var(--secondary); font-weight: bold;">
+                {{.Height}}
+              </td>
+              <td style="padding: 1rem; border-right: 1px solid var(--border-color);">
+                <a href="?block={{.Hash}}" style="color: var(--primary); text-decoration: none; word-break: break-all;">
+                  {{.Hash}}
+                </a>
+              </td>
+              <td style="padding: 1rem; text-align: center; border-right: 1px solid var(--border-color);">
+                <span class="badge bg-primary" style="background: var(--primary) !important; color: #000 !important; padding: 0.5rem 0.75rem; border-radius: 4px;">{{.NTx}}</span>
+              </td>
+              <td style="padding: 1rem; text-align: center; border-right: 1px solid var(--border-color); color: var(--text-secondary);">
+                {{.Size}} B
+              </td>
+              <td style="padding: 1rem; text-align: center; color: var(--success);">
+                {{.Age}}
+              </td>
+            </tr>
+            {{end}}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, rgba(42, 214, 255, 0.1) 0%, rgba(127, 255, 212, 0.05) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: var(--glow);
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(42, 214, 255, 0.5);
+  }
+
+  .hero p {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+  }
+
+  table tbody tr:hover {
+    background: rgba(42, 214, 255, 0.05);
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .hero p {
+      font-size: 1rem;
+    }
+
+    table {
+      font-size: 0.9rem;
+    }
+
+    table th, table td {
+      padding: 0.75rem !important;
+    }
+  }
+</style>
+{{end}}

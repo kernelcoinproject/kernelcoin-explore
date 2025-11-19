@@ -1,0 +1,45 @@
+{{define "nodeinfo.html"}}
+<div class="row mb-4">
+  <div class="col-12">
+    <h2 style="color: var(--primary); margin-bottom: 0.5rem;">
+      <i class="fas fa-server"></i> Node Information
+    </h2>
+    <p class="text-muted" style="margin-bottom: 1.5rem;">Network and blockchain details</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <div style="background: var(--bg-card); border: 2px solid var(--border-color); border-radius: 12px; overflow: hidden; box-shadow: var(--glow);">
+      <table class="table" style="margin: 0; color: var(--text-primary); background: transparent;">
+        <tbody>
+    {{if .BlockchainInfo}}
+    <tr style="border-bottom: 1px solid var(--border-color);">
+      <th scope="row" style="color: var(--primary); font-weight: bold; padding: 1rem; border-right: 1px solid var(--border-color);">Chain</th>
+      <td style="padding: 1rem;">{{.BlockchainInfo.Chain}}</td>
+    </tr>
+    <tr style="border-bottom: 1px solid var(--border-color);">
+      <th scope="row" style="color: var(--primary); font-weight: bold; padding: 1rem; border-right: 1px solid var(--border-color);">Blocks</th>
+      <td style="padding: 1rem;">{{.BlockchainInfo.Blocks}}</td>
+    </tr>
+    <tr style="border-bottom: 1px solid var(--border-color);">
+      <th scope="row" style="color: var(--primary); font-weight: bold; padding: 1rem; border-right: 1px solid var(--border-color);">Difficulty</th>
+      <td style="padding: 1rem;">{{.BlockchainInfo.Difficulty}}</td>
+    </tr>
+    {{end}}
+    {{if .NetworkInfo}}
+    <tr style="border-bottom: 1px solid var(--border-color);">
+      <th scope="row" style="color: var(--primary); font-weight: bold; padding: 1rem; border-right: 1px solid var(--border-color);">Version</th>
+      <td style="padding: 1rem;">{{.NetworkInfo.Subversion}}</td>
+    </tr>
+    <tr style="border-bottom: 1px solid var(--border-color);">
+      <th scope="row" style="color: var(--primary); font-weight: bold; padding: 1rem; border-right: 1px solid var(--border-color);">Connections</th>
+      <td style="padding: 1rem;">{{.NetworkInfo.Connections}}</td>
+    </tr>
+    {{end}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{{end}}

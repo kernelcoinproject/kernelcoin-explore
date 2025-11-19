@@ -1,0 +1,65 @@
+{{define "base.html"}}<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>{{.Title}}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="bg-light">
+	<nav class="navbar bg-dark shadow navbar-expand-lg sticky-top bg-body-tertiary" data-bs-theme="dark">
+	  <div class="container-fluid">
+			<div id="logo">
+			<a class="navbar-brand" href="{{.HomeLink}}">
+				<i class="fas fa-coins" style="color: var(--primary);"></i>
+				{{.NetworkName}} Block Explorer
+			</a>
+			</div>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	      <span class="navbar-toggler-icon"></span>
+	    </button>
+	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+	      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+	        <li class="nav-item">
+						<a class="nav-link active" href="{{.HomeLink}}"><i class="fas fa-home"></i> {{.NetworkName}}</a>
+	        </li>
+	        <li class="nav-item">
+						<a class="nav-link" href="{{.NodeInfoLink}}"><i class="fas fa-info-circle"></i> Node-Info</a>
+	        </li>
+	      </ul>
+	      <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
+				<li class="nav-item pe-2">
+		      <form class="d-flex" role="search" action="{{.HomeLink}}">
+		        <input class="form-control me-2" name="search" type="search" placeholder="Search hash/address" aria-label="Search" style="background: var(--bg-card); border-color: var(--border-color); color: var(--text-primary);">
+		        <button class="btn btn-outline-success" type="submit" style="color: var(--success); border-color: var(--success);">
+		          <i class="fas fa-search"></i> Search
+		        </button>
+		      </form>
+				</li>
+	      </ul>
+	    </div>
+	  </div>
+	</nav>
+
+<div class="w-100 h-100 p-3 mx-auto flex-column innercontent">	
+<div class="container mt-5">
+  {{template "content" .}}
+</div>
+
+<footer class="row mt-2 pt-2">
+  <div class="inner">
+	<div class="text-success">
+	  <hr>
+	</div>
+    <p>Block Explorer for {{.NetworkName}} - Vibe Coded to <a href="https://github.com/kernelcoinproject/kernelcoin-explorer">Go</a> from <a href="https://github.com/jonasschnelli/simple-block-explorer">PHP</a></p>
+  </div>
+</footer>
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+</body>
+</html>{{end}}

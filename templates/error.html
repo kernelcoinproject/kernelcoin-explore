@@ -1,0 +1,17 @@
+{{define "error.html"}}
+<div class="row">
+  <div class="col-12">
+    <div style="background: rgba(255, 68, 68, 0.1); border: 2px solid var(--error); border-radius: 12px; padding: 3rem 2rem; text-align: center; box-shadow: 0 0 20px rgba(255, 68, 68, 0.3);">
+      <h2 style="color: var(--error); margin-bottom: 1rem;">
+        <i class="fas fa-exclamation-circle"></i> Object Not Found
+      </h2>
+      <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+        {{.Error}}
+      </p>
+      <a href="{{.HomeLink}}" class="btn btn-primary">
+        <i class="fas fa-home"></i> Back to Home
+      </a>
+    </div>
+  </div>
+</div>
+{{end}}

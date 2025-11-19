@@ -1,0 +1,98 @@
+{{define "block.html"}}
+<div class="row">
+  <h2>Block Details</h2>
+</div>
+<div class="row mb-4">
+  <div class="col">
+    <ol class="list-group mb-2">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Height</div>
+          {{.Block.Height}}
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Hash</div>
+          <span>{{.Block.Hash}}</span>
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Time</div>
+          {{.Block.Time}}
+        </div>
+      </li>
+      {{if .Block.Stats}}
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Total amount in all outputs</div>
+          {{.Block.Stats.TotalOut}} satoshis
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Total fees</div>
+          {{.Block.Stats.TotalFee}} satoshis
+        </div>
+      </li>
+      {{end}}
+      {{if .Block.PreviousBlockHash}}
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Previous Block</div>
+          <a href="/explorer/?block={{.Block.PreviousBlockHash}}">{{.Block.PreviousBlockHash}}</a>
+        </div>
+      </li>
+      {{end}}
+    </ol>
+  </div>
+  <div class="col">
+    <ol class="list-group">
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Size in Bytes</div>
+          {{.Block.Size}}
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Weight in Bytes</div>
+          {{.Block.Weight}}
+        </div>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Transactions</div>
+          {{.Block.NTx}}
+        </div>
+      </li>
+      {{if .Block.NextBlockHash}}
+      <li class="list-group-item d-flex justify-content-between align-items-start">
+        <div class="ms-2 me-auto">
+          <div class="fw-bold">Next Block</div>
+          <a href="/explorer/?block={{.Block.NextBlockHash}}">{{.Block.NextBlockHash}}</a>
+        </div>
+      </li>
+      {{end}}
+    </ol>
+  </div>
+</div>
+
+<div class="row mb-4">
+  <div class="col-md-12">
+    <h4>Transactions ({{.Block.NTx}})</h4>
+    {{if .Block.Tx}}
+    <ul class="list-group list-numbered">
+      {{range .Block.Tx}}
+      <li class="list-group-item d-flex lh-condensed">
+        &nbsp;&nbsp;<div class="text-truncate"><a href="/explorer/?tx={{index . "txid"}}">{{index . "txid"}}</a></div>
+      </li>
+      {{end}}
+    </ul>
+    {{else}}
+    <span class="badge badge-warning">Block data not available</span>
+    {{end}}
+  </div>
+</div>
+{{end}}
